@@ -1,0 +1,224 @@
+import RPi.GPIO as GPIO
+from time import sleep
+import time
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+
+
+servod1=12
+servod2=12
+servod3=12
+servod4=12
+
+servoPIN1 = 19
+
+GPIO.setup(servoPIN1, GPIO.OUT)
+
+
+p1 = GPIO.PWM(servoPIN1, 100) # GPIO 17 for PWM with 50Hz
+p1.start(servod1) # Initialization
+
+
+servoPIN2 = 13
+
+GPIO.setup(servoPIN2, GPIO.OUT)
+
+
+p2 = GPIO.PWM(servoPIN2, 100) # GPIO 17 for PWM with 50Hz
+p2.start(servod2) # Initialization
+
+servoPIN3 = 16
+
+GPIO.setup(servoPIN3, GPIO.OUT)
+
+
+p3 = GPIO.PWM(servoPIN3, 100) # GPIO 17 for PWM with 50Hz
+p3.start(servod3) # Initialization
+
+servoPIN4 = 21
+
+GPIO.setup(servoPIN4, GPIO.OUT)
+
+
+p4 = GPIO.PWM(servoPIN4, 100) # GPIO 17 for PWM with 50Hz
+p4.start(servod4) # Initialization
+
+
+
+Buton1 = 4
+
+GPIO.setup(Buton1,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+
+Buton2 = 17
+
+GPIO.setup(Buton2,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+
+Buton3 = 25
+GPIO.setup(Buton3,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+
+Buton4 = 27
+
+GPIO.setup(Buton4,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+
+Buton5 = 22
+
+GPIO.setup(Buton5,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+
+Buton6 = 23
+
+GPIO.setup(Buton6,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+
+Buton7 = 24
+
+GPIO.setup(Buton7,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+
+Buton8 = 10
+
+GPIO.setup(Buton8,GPIO.IN,pull_up_down=GPIO.PUD_UP)
+
+
+
+
+
+while True:
+    buton_durum1 = GPIO.input(Buton1)
+    buton_durum2 = GPIO.input(Buton2)
+    buton_durum3 = GPIO.input(Buton3)
+    buton_durum4 = GPIO.input(Buton4)
+    buton_durum5 = GPIO.input(Buton5)
+    buton_durum6 = GPIO.input(Buton6)
+    buton_durum7 = GPIO.input(Buton7)
+    buton_durum8 = GPIO.input(Buton8)
+    time.sleep(0.02)
+   ## print(servod1,servod2,servod3,servod4)
+    if servod1 <=10:
+        servod1=10
+    if servod1 >=17:
+        servod1=17       
+    if servod2 <=12:
+        servod2=12
+    if servod2 >=23:
+        servod2=23       
+    if servod3 <=9:
+        servod3=9
+    if servod3 >=14:
+        servod3=14        
+    if servod4 <=5:                
+        servod4=5
+    if servod4 >=22:
+        servod4=22
+ 
+
+    if buton_durum1==0:
+        if buton_durum2==0:
+            print("otonomus")
+            p1.ChangeDutyCycle(17)
+            p2.ChangeDutyCycle(12)
+            p3.ChangeDutyCycle(12)
+            p4.ChangeDutyCycle(12)
+            time.sleep(1)
+            p1.ChangeDutyCycle(17)
+            p2.ChangeDutyCycle(12)
+            p3.ChangeDutyCycle(10)
+            p4.ChangeDutyCycle(12)
+            time.sleep(1)
+            p1.ChangeDutyCycle(17)
+            p2.ChangeDutyCycle(21)
+            p3.ChangeDutyCycle(10)
+            p4.ChangeDutyCycle(12)
+            time.sleep(1)
+            p1.ChangeDutyCycle(12)
+            p2.ChangeDutyCycle(21)
+            p3.ChangeDutyCycle(10)
+            p4.ChangeDutyCycle(12)
+            time.sleep(1)
+            p1.ChangeDutyCycle(12)
+            p2.ChangeDutyCycle(12)
+            p3.ChangeDutyCycle(12)
+            p4.ChangeDutyCycle(12)
+            time.sleep(1)
+            p1.ChangeDutyCycle(12)
+            p2.ChangeDutyCycle(12)
+            p3.ChangeDutyCycle(12)
+            p4.ChangeDutyCycle(22)
+            time.sleep(1)
+            p1.ChangeDutyCycle(12)
+            p2.ChangeDutyCycle(12)
+            p3.ChangeDutyCycle(13)
+            p4.ChangeDutyCycle(22)
+            time.sleep(1)
+            p1.ChangeDutyCycle(12)
+            p2.ChangeDutyCycle(15)
+            p3.ChangeDutyCycle(13)
+            p4.ChangeDutyCycle(22)
+            time.sleep(1)
+            p1.ChangeDutyCycle(17)
+            p2.ChangeDutyCycle(15)
+            p3.ChangeDutyCycle(13)
+            p4.ChangeDutyCycle(22)
+            time.sleep(1)
+            p1.ChangeDutyCycle(17)
+            p2.ChangeDutyCycle(12)
+            p3.ChangeDutyCycle(13)
+            p4.ChangeDutyCycle(22)
+            time.sleep(1)
+            p1.ChangeDutyCycle(17)
+            p2.ChangeDutyCycle(12)
+            p3.ChangeDutyCycle(12)
+            p4.ChangeDutyCycle(22)
+            time.sleep(1)
+            p1.ChangeDutyCycle(17)
+            p2.ChangeDutyCycle(12)
+            p3.ChangeDutyCycle(12)
+            p4.ChangeDutyCycle(12)
+            time.sleep(1)
+            
+            
+            
+            
+    if buton_durum1==0:
+        servod1 = servod1+0.1
+        p1.ChangeDutyCycle(servod1)
+       
+        
+        
+    if buton_durum2==0:
+        p1.ChangeDutyCycle(servod1)
+        servod1 = servod1-0.1
+##########################################       
+
+    
+    if buton_durum3==0:
+        p2.ChangeDutyCycle(servod2)
+        servod2 = servod2+0.1
+        
+    if buton_durum4==0:
+        p2.ChangeDutyCycle(servod2)
+        servod2 = servod2-0.1
+##########################################       
+
+    
+    if buton_durum5==0:
+      
+        p3.ChangeDutyCycle(servod3)
+        servod3 = servod3+0.1
+        
+    if buton_durum6==0:
+        
+        p3.ChangeDutyCycle(servod3)
+        servod3 = servod3-0.1
+##########################################       
+
+    
+    if buton_durum7==0:
+
+
+        p4.ChangeDutyCycle(servod4)
+
+        servod4 = servod4+0.1
+        
+    if buton_durum8==0:
+        
+        p4.ChangeDutyCycle(servod4)
+        servod4 = servod4-0.1
+
